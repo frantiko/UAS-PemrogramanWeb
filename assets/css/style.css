@@ -694,6 +694,43 @@ body {
 /*-----------------------------------*\
   #VIDEO
 \*-----------------------------------*/
+@media (max-width: 768px) {
+  /* Sesuaikan gaya untuk layar kecil */
+  .video {
+    padding-bottom: 75%; /* Aspect ratio 4:3 untuk layar kecil jika diperlukan */
+  }
+
+  input[type="range"] {
+    width: 100%; /* Pastikan kontrol volume tetap responsif */
+  }
+}
+
+input[type="range"] {
+  width: 100%; /* Pastikan kontrol volume mengikuti lebar kontainer */
+  max-width: 300px; /* Atur lebar maksimum jika diperlukan */
+  margin: 0 auto; /* Pusatkan kontrol volume jika diinginkan */
+}
+
+.video {
+  position: relative;
+  padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS untuk kontrol volume */
+input[type="range"] {
+  width: 100%; /* Atur lebar kontrol volume sesuai lebar kontainer */
+  margin-top: 10px; /* Jarak atas jika diperlukan */
+}
 .video-card {
   position: relative;
   width: 970px;  /* Set width to match the original background image width */

@@ -65,10 +65,36 @@ addEventOnElem(window, "scroll", activeElem);
 
 'use strict';
 
-/**
- * set volume function
- */
-const setVolume = function (value) {
-  const video = document.getElementById("myVideo");
-  video.volume = value;
+// Load the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// Replace the 'myVideo' element with an <iframe> and YouTube player
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('myVideo', {
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
 }
+
+function onPlayerReady(event) {
+  const volumeControl = document.getElementById('volumeControl');
+  volumeControl.addEventListener('input', function() {
+    setVolume(this.value);
+  });
+}
+
+function onPlayerStateChange(event) {
+  // Implement any additional functionality if needed
+}
+
+const setVolume = function(value) {
+  if (player && player.setVolume) {
+    player.setVolume(value * 100); // YouTube API volume range is 0-100
+  }
+};

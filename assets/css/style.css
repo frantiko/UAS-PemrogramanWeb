@@ -694,6 +694,8 @@ body {
 /*-----------------------------------*\
   #VIDEO
 \*-----------------------------------*/
+/* CSS untuk memastikan video responsif */
+/* CSS tambahan untuk kontrol volume */
 @media (max-width: 768px) {
   /* Sesuaikan gaya untuk layar kecil */
   .video {
@@ -718,7 +720,7 @@ input[type="range"] {
   overflow: hidden;
 }
 
-.video video {
+.video iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -731,6 +733,7 @@ input[type="range"] {
   width: 100%; /* Atur lebar kontrol volume sesuai lebar kontainer */
   margin-top: 10px; /* Jarak atas jika diperlukan */
 }
+
 .video-card {
   position: relative;
   width: 970px;  /* Set width to match the original background image width */
@@ -787,9 +790,6 @@ input[type="range"] {
   inset: 0;
   background-color: var(--black_30);
 }
-
-
-
 
 
 /*-----------------------------------*\

@@ -696,10 +696,24 @@ body {
 \*-----------------------------------*/
 /* CSS untuk memastikan video responsif */
 /* CSS tambahan untuk kontrol volume */
+.audio-player {
+  display: flex;
+  justify-content: center; /* Memusatkan elemen secara horizontal */
+  align-items: center; /* Memusatkan elemen secara vertikal (jika kontainer memiliki tinggi yang cukup) */
+  /* height: 100vh; Jika Anda tidak ingin mengatur tinggi kontainer secara penuh */
+  padding: 20px; /* Padding untuk memberi jarak dari tepi kontainer */
+}
+
+audio {
+  max-width: 100%; /* Menjaga elemen audio agar tidak melebihi lebar kontainer */
+  width: 100%; /* Memastikan audio memanfaatkan lebar penuh kontainer */
+  /* height: auto; Jika ingin memastikan audio tidak mempengaruhi tinggi kontainer */
+}
+
+/* Responsif untuk layar kecil */
 @media (max-width: 768px) {
-  /* Sesuaikan gaya untuk layar kecil */
-  .video {
-    padding-bottom: 75%; /* Aspect ratio 4:3 untuk layar kecil jika diperlukan */
+  .audio-player {
+    padding-bottom: 75%; /* Aspect ratio 4:3 jika perlu */
   }
 
   input[type="range"] {
@@ -707,12 +721,7 @@ body {
   }
 }
 
-input[type="range"] {
-  width: 100%; /* Pastikan kontrol volume mengikuti lebar kontainer */
-  max-width: 300px; /* Atur lebar maksimum jika diperlukan */
-  margin: 0 auto; /* Pusatkan kontrol volume jika diinginkan */
-}
-
+/* CSS tambahan untuk video */
 .video {
   position: relative;
   padding-bottom: 56.25%; /* Aspect ratio 16:9 */
@@ -727,6 +736,64 @@ input[type="range"] {
   width: 100%;
   height: 100%;
 }
+
+.video-card {
+  position: relative;
+  width: 970px;  /* Set width to match the original background image width */
+  height: 550px; /* Set height to match the original background image height */
+  margin: 0 auto; /* Center the video card */
+}
+
+#myVideo {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#volumeControl {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.video {
+  background-size: contain;
+  background-position: center top;
+}
+
+.video-banner {
+  position: relative;
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 120px;
+}
+
+.video .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--radical-red);
+  font-size: 30px;
+  padding: 16px;
+  color: var(--white);
+  border-radius: var(--radius-circle);
+  box-shadow: 0 0 0 0 var(--white_50);
+  z-index: 1;
+  animation: pulse 3s ease infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--white_50); }
+  100% { box-shadow: 0 0 0 20px transparent; }
+}
+
+.video-banner::after {
+  inset: 0;
+  background-color: var(--black_30);
+}
+
 
 /* CSS untuk kontrol volume */
 input[type="range"] {
@@ -790,7 +857,46 @@ input[type="range"] {
   inset: 0;
   background-color: var(--black_30);
 }
-
+/* Styling Student table */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1.6rem;
+  font-family: var(--ff-poppins);
+  text-align: left;
+  box-shadow: var(--shadow-1);
+}
+ 
+.styled-table thead tr {
+  background-color: var(--kappel);
+  color: var(--white);
+  text-align: left;
+  font-family: var(--ff-league_spartan);
+  font-size: var(--fs-4);
+}
+ 
+.styled-table th, .styled-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--platinum);
+}
+ 
+.styled-table tbody tr {
+  background-color: var(--isabelline);
+}
+ 
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: var(--platinum);
+}
+ 
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--kappel);
+}
+ 
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: var(--kappel);
+}
 
 /*-----------------------------------*\
   #STATS
